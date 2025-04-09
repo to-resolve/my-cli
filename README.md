@@ -11,6 +11,9 @@
 ## 安装
 
 ```bash
+# 更新脚手架到最新版本
+luo-cli update
+
 # 使用模版创建新项目
 luo-cli create
 

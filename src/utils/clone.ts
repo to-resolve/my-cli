@@ -1,6 +1,8 @@
 import simpleGit, {SimpleGitOptions} from 'simple-git';
 import createLogger from 'progress-estimator';
 import chalk from "chalk";
+import log from './log';
+import figlet from 'figlet';
 
 const logger = createLogger({ // 初始化进度条
   spinner: {
@@ -8,6 +10,17 @@ const logger = createLogger({ // 初始化进度条
     frames: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'].map(item=>chalk.blue(item)) // 设置加载动画
   }
 })
+
+const goodPrinter = () => {
+  const data = figlet.textSync('luo-cli', {
+    font: 'Standard', // 不要加 .flf 后缀
+    horizontalLayout: 'default',
+    verticalLayout: 'default',
+  })
+
+  console.log(chalk.rgb(220, 220, 170)(data))
+}
+
 const gitOptions: Partial<SimpleGitOptions> = {
   baseDir: process.cwd(),
   binary: 'git',
@@ -23,23 +36,24 @@ export const clone = async (url: string, projectName: string, options: string[])
     })
 
     console.log()
+    goodPrinter()
     console.log()
-    console.log(chalk.blueBright(`=========================================`))
-    console.log(chalk.blueBright(`===== 欢迎使用 luo-handy-cli 脚手架 =====`))
-    console.log(chalk.blueBright(`=========================================`))
+    console.log(`${chalk.blue(`=========================================`)}`)
+    console.log(`${chalk.blue(`===== 欢迎使用 luo-handy-cli 脚手架 =====`)}`)
+    console.log(`${chalk.blue(`=========================================`)}`)
     console.log()
     console.log()
-    console.log(`项目创建成功 ${chalk.blueBright(projectName)}`)
-    console.log(`执行以下命令启动项目：`)
-    console.log(`cd ${chalk.blueBright(projectName)}`)
-    console.log(`${chalk.yellow('pnpm')} install`)
-    console.log(`${chalk.yellow('pnpm')} run dev`)
+    log.success(`项目创建成功 ${chalk.blue(projectName)}`)
+    log.success(`执行以下命令启动项目：`)
+    log.info(`cd ${chalk.blue(projectName)}`)
+    log.info(`${chalk.yellow('pnpm')} install`)
+    log.info(`${chalk.yellow('pnpm')} run dev`)
     console.log()
     console.log()
 
 
   } catch (err: any) {
-    console.error(chalk.red('下载失败'))
+    log.error(chalk.red('下载失败'))
     console.log(err)
     }
 } 

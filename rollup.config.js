@@ -18,6 +18,7 @@ export default defineConfig([
         format: 'cjs', // 输出 commonjs 文件
       }
     ],
+    external: ['figlet'],
     plugins: [
       nodeResolve(),
       externals({

@@ -1,4 +1,5 @@
 # my-cli
+![Npm 版本](https://img.shields.io/badge/my--cli-v0.0.1-green)
 
 ## 简介
 - 用于快速搭建前端项目的命令行工具

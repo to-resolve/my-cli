@@ -2,6 +2,10 @@ import { input, select } from '@inquirer/prompts';
 import { clone } from '../utils/clone';
 import path from 'path';
 import fs from 'fs-extra';
+import { name, version } from '../../package.json';
+import axios, { AxiosResponse } from 'axios';
+import lodash from 'lodash';
+import chalk from "chalk";
 
 export interface TemplateInfo {
   name: string; // 项目名称
@@ -26,6 +30,33 @@ export const templates: Map<string, TemplateInfo> = new Map(
     }]
   ]
 )
+
+export const getNpmInfo = async (npmName: string) => {
+  const npmUrl = `https://registry.npmjs.org/${name}`
+  let res = {}
+  try {
+    res = await axios.get(npmUrl)
+  } catch (err) {
+    console.error(err as string)
+  }
+  return res
+}
+
+export const getNpmLatestVersion = async (name: string) => {
+  // data['dist-tags'].latest 为最新版本号
+  const { data } = (await getNpmInfo(name)) as AxiosResponse
+  return data['dist-tags'].latest
+}
+
+export const checkVersion = async (name: string, Version: string) => {
+  const latestVersion = await getNpmLatestVersion(name)
+  const need = lodash.gt(latestVersion, Version)
+  if(need) {
+    console.log(`检测到 luo-handy-cli 最新版:${chalk.blueBright(latestVersion)} 当前版本:${chalk.blueBright(Version)} ~`)
+    console.log(`可使用 ${chalk.yellow('pnpm')} install luo-handy-cli@latest 更新 ~`)
+  }
+  return need
+}
 
 export const isOverwrite = async (fileName: string) => {
   console.warn(`${fileName} 文件已存在 !`)
@@ -60,6 +91,9 @@ export async function create(projectName?: string) {
       return // 不覆盖直接结束
     }
   }
+
+  // 检测版本更新
+    await checkVersion(name, version)
 
   const templateName = await select({
     message: '请选择模版',

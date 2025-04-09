@@ -54,6 +54,7 @@ export const checkVersion = async (name: string, Version: string) => {
   if(need) {
     console.log(`检测到 luo-handy-cli 最新版:${chalk.blueBright(latestVersion)} 当前版本:${chalk.blueBright(Version)} ~`)
     console.log(`可使用 ${chalk.yellow('pnpm')} install luo-handy-cli@latest 更新 ~`)
+    console.log(`也可使用 ${chalk.yellow('luo-cli update')} 更新 ~`)
   }
   return need
 }

@@ -1,4 +1,4 @@
-# @luo-cli
+# luo-handy-cli
 ![Npm 版本](https://img.shields.io/badge/my--cli-v0.0.1-green)
 
 ## 简介
@@ -12,13 +12,13 @@
 
 ```bash
 # 使用模版创建新项目
-@luo-cli create
+luo-cli create
 
 # 执行项目文件夹名称并选择模版创建新项目
-@luo-cli create [projectName]
+luo-cli create [projectName]
 
 # 查看脚手架版本
-@luo-cli -v
-@luo-cli -version
+luo-cli -v
+luo-cli -version
 
 ```

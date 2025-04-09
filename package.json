@@ -1,5 +1,5 @@
 {
-  "name": "my-cli",
+  "name": "@luo-cli",
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "README.md"
   ],
   "license": "ISC",
-  "description": "my-cli 脚手架工具",
+  "description": "@luo-cli 脚手架工具",
   "dependencies": {
     "@types/node": "^22.14.0",
     "tslib": "^2.8.1",

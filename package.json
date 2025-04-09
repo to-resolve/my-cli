@@ -9,7 +9,7 @@
   "keywords": ["vue3", "typescript"],
   "author": "luo",
   "bin": {
-    "my": "bin/index.js"
+    "luo-cli": "bin/index.js"
   },
   "files": [
     "dist",

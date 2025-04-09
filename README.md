@@ -5,8 +5,8 @@
 - 用于快速搭建前端项目的命令行工具
 
 ## 模版
-- 快速生成Vue3-ElementPlus-Vite-TypeScript的模版
-- 快速生成Vue2-ElementUi的模版
+- 快速生成 [Vue3-ElementPlus-Vite-TypeScript的模版](https://gitee.com/youlaiorg/vue3-element-admin)
+- 快速生成 [Vue2-ElementUi的模版](https://github.com/PanJiaChen/vue-admin-template)
 
 ## 安装
 

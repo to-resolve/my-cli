@@ -36,7 +36,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/lodash": "^4.17.16",
     "axios": "^1.8.4",
-    "chalk": "^5.4.1",
+    "chalk": "4",
     "commander": "^13.1.0",
     "figlet": "^1.8.0",
     "fs-extra": "^11.3.0",
